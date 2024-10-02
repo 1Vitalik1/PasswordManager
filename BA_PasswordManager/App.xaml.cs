@@ -2,11 +2,9 @@
 using BA_PasswordManager.MyPages;
 using BA_PasswordManager.MyPages.SubPages;
 using BA_PasswordManager.MyWindows;
-using Microsoft.Win32;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
-using System.Windows.Media.Animation;
 
 namespace BA_PasswordManager
 {
@@ -33,8 +31,6 @@ namespace BA_PasswordManager
 
         internal App()
         {
-            BankCard bankCard = new BankCard("5412 1234 5678 9010", "Vi", "09/15", "982");
-            Console.WriteLine();
             if (!Directory.Exists(pmAppData)) Directory.CreateDirectory(pmAppData);
             
             if (File.Exists(keyPath)) key = File.ReadAllText(keyPath);
