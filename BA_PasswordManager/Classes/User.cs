@@ -12,43 +12,33 @@ namespace BA_PasswordManager.Classes
     [DataContract]
     public class User
     {
-        [DataMember] internal string login { get; set; } = string.Empty;
-        [DataMember] internal string password { get; set; } = string.Empty;
-        [DataMember] internal string? email {  get; set; }
+        [DataMember] public int Id { get; set; }
+        [DataMember] public string login { get; set; } = string.Empty;
+        [DataMember] public string password { get; set; } = string.Empty;
+        [DataMember] public string? email {  get; set; } = string.Empty;
 
-        [DataMember] internal string? imageUriIn { get; set; }
-        [DataMember] internal string? imageUriEx { get; set; }
+        [DataMember] internal string imageUriIn { get; set; } = string.Empty;
+        [DataMember] public string imageUriEx { get; set; } = string.Empty;
 
-        [DataMember] internal string? firstName {  get; set; }
-        [DataMember] internal string? lastName { get; set; }
-        [DataMember] internal bool isEmailVerified { get; set; } = false;
-        [DataMember] internal bool isOnlineAccount { get; set; } = false;
+        [DataMember] public string firstName { get; set; } = string.Empty;
+        [DataMember] public string lastName { get; set; } = string.Empty;
+        [DataMember] public bool isEmailVerified { get; set; } = false;
+        [DataMember] public bool isOnlineAccount { get; set; } = false;
+        [DataMember] public DateTime dateCorrected { get; set; }
+        [DataMember] internal bool isThisFirstEntry { get; set; } = true;
 
-        internal User(string login, string password, string? imageUriIn = null, string? email = null, string? firstname = null, string? lastname = null)
+        internal User(string login, string password, string imageUriIn = "", string email = "", string firstname = "", string lastname = "", bool isOnlineAccount = false)
         {
-            //Локальный
             this.login = login;
             this.password = password;
             this.email = email;
             this.firstName = firstName;
             this.lastName = lastName;
             this.imageUriIn = imageUriIn;
-
-        }
-
-        internal User(string login, string password, string? imageUriEx = null, string? email = null, string? firstname = null, string? lastname = null, bool isOnlineAccount = true)
-        {
-            //Онлайн
-            this.login = login;
-            this.password = password;
-            this.email = email;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.imageUriEx = imageUriEx;
             this.isOnlineAccount = isOnlineAccount;
+            if (!isOnlineAccount) isThisFirstEntry = false;
+
         }
-
-
 
         internal User()
         {

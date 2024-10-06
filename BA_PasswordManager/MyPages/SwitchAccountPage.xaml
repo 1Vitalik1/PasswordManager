@@ -60,7 +60,7 @@
             </Border>
         </StackPanel>
         <TextBlock  Grid.Row="2" Margin="15" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="32" Foreground="White">
-            Version: 0.12 OfflineOnly
+            Version: 0.12
         </TextBlock>
     </Grid>
 </Page>

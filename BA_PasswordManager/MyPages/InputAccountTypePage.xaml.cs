@@ -32,7 +32,7 @@ namespace BA_PasswordManager.MyPages
 
         private void Button_Global_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            App.mainWindow.frame.Navigate(new AddGlobalAccountPage());
         }
 
     }

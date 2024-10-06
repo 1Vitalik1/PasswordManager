@@ -15,7 +15,6 @@ namespace BA_PasswordManager.MyPages.SubPages
     {
         int modeIndex;
         bool  isMode = false;
-        User currentUser { get; set; } = new User();
         public Pass()
         {
             InitializeComponent();
@@ -98,7 +97,14 @@ namespace BA_PasswordManager.MyPages.SubPages
                 App.userPasswords.Add(new Password(field_passName.Text, field_login.Text, field_email.Text, field_pass.Text, null, field_phone.Text,allNotes));
                 viewAllPassword();
             }
+            App.currentUser.dateCorrected = DateTime.Now;
             saveAndCrypt();
+
+            if(App.currentUser.isOnlineAccount)
+            {
+                Compression.compress(App.currentUser);
+                App.ftp.saveUserData(App.currentUser);
+            }
         }
 
         private void saveAndCrypt()
@@ -107,7 +113,7 @@ namespace BA_PasswordManager.MyPages.SubPages
             if (File.Exists(App.keyPathInPasswords)) File.Delete(App.keyPathInPasswords);
             string key = Crypto.GenerateKey();
             File.WriteAllText(App.keyPathInPasswords, key);
-            Crypto.SavePasswordsInFile(App.userPasswords, key, currentUser);
+            Crypto.SavePasswordsInFile(App.userPasswords, key, App.currentUser);
         }
 
         private void Button_AcceptAdd_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -25,23 +25,30 @@
                         💻
                     </TextBlock>
                     <TextBlock VerticalAlignment="Bottom" Foreground="White" FontSize="30" HorizontalAlignment="Center" Margin="0,30,0,15">
-                    Локальный аккаунт
+                    Локальная учётная запись
                     </TextBlock>
 
                 </StackPanel>
             </Grid>
         </Border>
         <Border x:Name="Button_Global" Grid.Column="1" Margin="50" Background="#171A24" CornerRadius="5" MouseLeftButtonDown="Button_Global_MouseLeftButtonDown">
-            <Grid VerticalAlignment="Center">
-                <StackPanel>
+            <Grid>
+                <StackPanel VerticalAlignment="Center">
                     <TextBlock FontSize="200" HorizontalAlignment="Center" Foreground="#366EC0">
                     🌐
                     </TextBlock>
                     <TextBlock VerticalAlignment="Bottom" Foreground="White" FontSize="30" HorizontalAlignment="Center" Margin="0,30,0,15">
-                    Глобальный аккаунт
+                    Глобальная учётная запись
                     </TextBlock>
                 </StackPanel>
-
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Border Padding="5" Background="red" Margin="5" CornerRadius="5">
+                        <TextBlock VerticalAlignment="Bottom" Foreground="White" FontSize="30" HorizontalAlignment="Center" Margin="0,5,0,5">Вход в аккаунт</TextBlock>
+                    </Border>
+                    <Border Padding="5" Background="red" Margin="5,5,5,15" CornerRadius="5">
+                        <TextBlock VerticalAlignment="Bottom" Foreground="White" FontSize="30" HorizontalAlignment="Center" Margin="0,5,0,5">Регистрация аккаунта</TextBlock>
+                    </Border>
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>

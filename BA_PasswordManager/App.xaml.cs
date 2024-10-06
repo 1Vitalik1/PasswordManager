@@ -10,9 +10,9 @@ namespace BA_PasswordManager
 {
     public partial class App : Application
     {
+        internal static Ftp ftp = new Ftp();
         internal static User currentUser = new User();
-     
-        public static bool isOfflineOnly = true;
+        public static bool isOfflineOnly = false;
         public static readonly string pmAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + $"\\.BATeam\\BAPW\\";
         public static string saveAccountsPath = "Data.io";
         private static string keyPath = pmAppData + "key";
@@ -31,8 +31,8 @@ namespace BA_PasswordManager
 
         internal App()
         {
-            if (!Directory.Exists(pmAppData)) Directory.CreateDirectory(pmAppData);
-            
+            Directory.CreateDirectory(pmAppData);
+
             if (File.Exists(keyPath)) key = File.ReadAllText(keyPath);
             else 
             {
