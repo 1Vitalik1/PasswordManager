@@ -1,18 +1,7 @@
 ﻿using BA_PasswordManager.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BA_PasswordManager.MyPages
 {
@@ -27,6 +16,12 @@ namespace BA_PasswordManager.MyPages
             InitializeComponent();
             addUser = AllUserList.Children[0];
             showAllUsers();
+            if(!App.isAccountSelectEnabled)
+            {
+                textBlock_status.Text = "Загрузка данных...";
+                foreach(Border button in AllUserList.Children)
+                    button.IsEnabled = false;
+            }
         }
 
 

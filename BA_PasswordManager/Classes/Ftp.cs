@@ -25,11 +25,11 @@ namespace BA_PasswordManager.Classes
 
         internal bool loadUserData(User user)
         {
-            string fileFromGet = ($"{user.login}_online.data");
-            _client.AutoConnect();
-            if (_client.FileExists($"/www.BloodyAlpha.somee.com/UserData/{fileFromGet}"))
-                _client.DownloadFiles(($"{App.pmAppData}"), new string[] { ($"/www.BloodyAlpha.somee.com/UserData/{fileFromGet}") } );
-            return true;    
+                string fileFromGet = ($"{user.login}_online.data");
+                _client.AutoConnect();
+                if (_client.FileExists($"/www.BloodyAlpha.somee.com/UserData/{fileFromGet}"))
+                    _client.DownloadFiles(($"{App.pmAppData}"), new string[] { ($"/www.BloodyAlpha.somee.com/UserData/{fileFromGet}") }); 
+            return true;
         }
 
         

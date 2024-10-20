@@ -30,10 +30,14 @@ namespace BA_PasswordManager.MyPages
             App.mainWindow.frame.Navigate(new AddLocalAccountPage());
         }
 
-        private void Button_Global_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void button_login_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void button_signup_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             App.mainWindow.frame.Navigate(new AddGlobalAccountPage());
         }
-
     }
 }

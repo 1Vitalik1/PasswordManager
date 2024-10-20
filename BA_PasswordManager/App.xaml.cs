@@ -10,6 +10,7 @@ namespace BA_PasswordManager
 {
     public partial class App : Application
     {
+        internal static bool isAccountSelectEnabled = true;
         internal static Ftp ftp = new Ftp();
         internal static User currentUser = new User();
         public static bool isOfflineOnly = false;
@@ -31,6 +32,8 @@ namespace BA_PasswordManager
 
         internal App()
         {
+            //EmailService.SendEmailInCode("Perfilov.vitalik2006@gmail.com","123werdrfs").Wait();
+
             Directory.CreateDirectory(pmAppData);
 
             if (File.Exists(keyPath)) key = File.ReadAllText(keyPath);

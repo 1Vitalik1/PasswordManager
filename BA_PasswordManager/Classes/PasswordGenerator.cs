@@ -32,5 +32,17 @@ namespace BA_PasswordManager.Classes
 
             return password;
         }
+
+        public static string generateKey()
+        {
+            string password = "";
+            string symbol = "qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKKLZXCVBNM";
+            for (int i = 0; i < 10; i++) 
+            {
+                password += symbol[rnd.Next(symbol.Length)];
+            }
+
+            return password;
+        }
     }
 }

@@ -95,9 +95,20 @@
                             <TextBlock FontSize="20">Email:</TextBlock>
                             <TextBox x:Name="field_email"  Margin="5" Width="550">
                             </TextBox>
+                            <Border x:Name="sendKeyToMail" Margin="0,3,0,3" Background="#FFB10000" CornerRadius="5" MouseLeftButtonDown="sendKeyToMail_MouseLeftButtonDown">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5">Отправить ключ 🔑</TextBlock>
+                            </Border>
                         </StackPanel>
                     </Border>
                 </StackPanel>
+
+                <Border Margin="35,5" Padding="5" Background="#366EC0" CornerRadius="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="20">Ключ:</TextBlock>
+                        <TextBox x:Name="field_key"  Margin="5" Width="680">
+                        </TextBox>
+                    </StackPanel>
+                </Border>
             </StackPanel>
             <Grid Grid.Row="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
