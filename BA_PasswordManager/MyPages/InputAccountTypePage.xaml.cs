@@ -32,7 +32,8 @@ namespace BA_PasswordManager.MyPages
 
         private void button_login_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            LoginGlobalAccountPage loginGlobalAccountPage = new LoginGlobalAccountPage();
+            App.mainWindow.frame.Navigate(loginGlobalAccountPage);
         }
 
         private void button_signup_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

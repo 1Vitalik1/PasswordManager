@@ -115,7 +115,7 @@ namespace BA_PasswordManager.Classes
             border.BorderBrush = new SolidColorBrush(Color.FromRgb(37, 39, 47));
             border.Child = image;
 
-            if (user.imageUriIn != null) image.Background = new ImageBrush(new BitmapImage(new Uri(user.imageUriIn)));
+            if (user.imageUriIn != null && user.imageUriIn != string.Empty) image.Background = new ImageBrush(new BitmapImage(new Uri(user.imageUriIn)));
             else if (user.imageUriEx != null) { } //TODO: Обработка внешнего изображения 
             else if (user.imageUriEx == null) image.Background = new ImageBrush(new BitmapImage(new Uri("https://www.analitico.pro/wp-content/uploads/2021/08/404-Pagina.jpg", UriKind.Absolute)));
 

@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using BA_PasswordManager.Classes;
+using Microsoft.Win32;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -11,13 +13,19 @@ namespace BA_PasswordManager.MyPages
     /// </summary>
     public partial class LoginGlobalAccountPage : Page
     {
+        string key = String.Empty;
         string? avatarImageUri;
-
+        User userInLogin;
         public LoginGlobalAccountPage()
         {
             InitializeComponent();
+            field_login.TextChanged += Field_login_TextChanged;
         }
 
+        private void Field_login_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            key = string.Empty;
+        }
 
         private void button_save_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -48,8 +56,24 @@ namespace BA_PasswordManager.MyPages
                 App.Current.Dispatcher.Invoke(() => { App.mainWindow.frame.Navigate(new SwitchAccountPage()); });
             });
             */
-
-            App.mainWindow.frame.Navigate(new SwitchAccountPage());
+            if(key == field_key.Text)
+            {
+                App.users.Add(userInLogin);
+                Crypto.SaveAccountsInFile(App.users, App.key);
+                App.isAccountSelectEnabled = false;
+                if (App.currentUser.isThisFirstEntry)
+                {
+                    App.ftp.loadUserData(userInLogin);
+                    Compression.decompress(userInLogin);
+                    App.currentUser.isThisFirstEntry = false;
+                }
+                App.isAccountSelectEnabled = true;
+                App.Current.Dispatcher.Invoke(() => { App.mainWindow.frame.Navigate(new SwitchAccountPage()); });
+            }
+            else
+            {
+                MessageBox.Show("Не правильно введён ключ!");
+            }
         }
 
         private void button_changeImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -76,6 +100,27 @@ namespace BA_PasswordManager.MyPages
         private void button_cancle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             App.mainWindow.frame.GoBack();
+        }
+
+        private void button_accept_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            using (var db = new Database())
+            {
+                var user = db.Users.FirstOrDefault(u => u.login == field_login.Text);
+
+                if (user != null && user.password == field_password.Text)
+                {
+                    userInLogin = user;
+                    field_email.Text = user.email;
+                    key = PasswordGenerator.generateKey();
+                    EmailService.SendEmailInCode(user.email, key);
+                }
+                else
+                {
+                    MessageBox.Show("Введены не корректные данные!");
+                    //Console.WriteLine("Login or password is incorrect.");
+                }
+            }
         }
     }
 }

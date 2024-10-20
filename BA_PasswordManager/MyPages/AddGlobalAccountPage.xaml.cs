@@ -55,15 +55,11 @@ namespace BA_PasswordManager.MyPages
 
                     App.mainWindow.frame.Navigate(new SwitchAccountPage());
                 }
-                else
-                {
-                    MessageBox.Show("Пользователь с таким логином уже зарегистрирован.");
-                }
+                else MessageBox.Show("Пользователь с таким логином уже зарегистрирован.");
+                
             }
-            else
-            {
-                MessageBox.Show("Введён не правильный код!");
-            }
+            else MessageBox.Show("Введён не правильный код!");
+            
 
         }
 
@@ -103,7 +99,7 @@ namespace BA_PasswordManager.MyPages
 
         private void Field_email_TextChanged(object sender, TextChangedEventArgs e)
         {
-            key += string.Empty;
+            key = string.Empty;
             field_key.Text = string.Empty;
         }
     }
